@@ -11,15 +11,49 @@ const ContextProvider = (props)=>{
     const[ShowResult,setShoeResult]=useState(false)
     const[loading,setLoading]=useState(false)
     const[resultData,setResultData]=useState("")
+    const delayPara=(index,nextWord)=>{
+        setTimeout(function(){
+            setResultData(prev=>prev+nextWord)
+        },75*index)
+    }
+
+    const newChat=()=>{
+        setLoading(false)
+        setShoeResult(false)
+    }
 
     const onSent=async (promt)=>{
 
         setResultData('')
         setLoading(true)
         setShoeResult(true)
-        setRecentPromt(input)
-        const response=await run(input)
-        setResultData(response)
+        let response;
+        if (promt !== undefined){
+             response=await run(promt);
+             setRecentPromt(promt)
+        }
+        else{
+            setPrevPromt(prev=>[...prev,input])
+            setRecentPromt(input)
+            response=await run(input)
+        }
+        let responseArra=response.split('**')
+        let newResponse=""
+        for(let i=0;i<responseArra.length;i++)
+        {
+            if(i==0||i%2!==1){
+                newResponse+=responseArra[i]
+            }
+            else{
+                newResponse+="<b>"+responseArra[i]+"</b>"
+            }
+        }
+        let newResponse2=newResponse.split("*").join("</br>")
+        let newResponseArr=newResponse2.split(' ')
+        for(let i=0;i<newResponseArr.length;i++){
+            const nextWord=newResponseArr[i]
+            delayPara(i,nextWord+" ")
+        }
         setLoading(false)
         setInput("")
     }
@@ -34,7 +68,8 @@ const ContextProvider = (props)=>{
         ShowResult,
         loading,
         resultData,
-        onSent
+        onSent,
+        newChat
     }
 
     return(
