@@ -1,3 +1,9 @@
+@font-face {
+    font-family: jv;
+    src: url('./JainiPurva-Regular.ttf');
+}
+
+
 .main{
     flex:1;
     min-height: 100vh;
@@ -28,13 +34,13 @@
 .main .greet{
     margin: 50ox 0px;
     font-size: 56px;
-    color: #c4c7c5;
+    color: #fbdebc;
     font-weight: 500;
     padding: 20px;
 }
 
 .main .greet span{
-    background: -webkit-linear-gradient(16deg,#4b90ff,#ff5546) ;
+    background: -webkit-linear-gradient(16deg,#ebc284,#ecb25f) ;
     -webkit-background-clip: text;
     -webkit-text-fill-color:transparent;
 }
@@ -49,10 +55,11 @@
 .main .card{
     height: 200px;
     padding: 15px;
-    background-color: #f0f4f9;
+    background-color: #f9f5f0;
     border-radius: 10px;
     position: relative;
     cursor: pointer;
+    transition: 300ms;
 }
 
 .main .card img{
@@ -72,7 +79,7 @@
 }
 
 .main .card:hover{
-    background-color: #dfe4ea;
+    background-color: #eedec2;
 }
 
 .main-bottom{
@@ -148,8 +155,29 @@
    align-items: start;
    gap: 20px; 
 }
+/* HTML: <div class="loader"></div> */
+/* HTML: <div class="loader"></div> */
+.loader {
+    width: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    padding: 3px;
+    background: 
+      radial-gradient(farthest-side,#ffa516 95%,#0000) 50% 0/12px 12px no-repeat,
+      radial-gradient(farthest-side,#0000 calc(100% - 5px),#ffa516 calc(100% - 4px)) content-box;
+    animation: l6 2s infinite ;
+  }
+  @keyframes l6 {to{transform: rotate(1turn)}}
+  
+.newcolor{
+    color: rgb(254, 170, 74);
+}
 
-.loader{
+.icon h1{
+    font-weight:200;
+}
+
+/* .loader{
     width:100%;
     display: flex;
     flex-direction: column;
@@ -174,14 +202,14 @@
         background-position: 800px 0px;
     }
     
-}
+} */
 .result-data p{
     font-size: 17px;
     font-weight: 300;
     line-height: 1.8;
 }
 
-@media (max-width:600px){
+/* @media (max-width:600px){
     .main-bottom input{
         flex:none;
         width: 150px;
@@ -195,4 +223,4 @@
     .search-box div{
         gap: 5px;
     }
-}
+} */

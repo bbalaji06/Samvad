@@ -9,7 +9,8 @@ const Main = () => {
   return (
     <div className='main'>
         <div className="nav">
-            <p>Gemini</p>
+        <div className='icon'>
+            <h1 style={{ fontFamily: "jv"}}>Sam<span className='newcolor' style={{fontFamily:"jv"}}>Vad</span></h1></div>
             <img src={assets.user_icon}/>
         </div>
         <div className="main-container">
@@ -48,9 +49,6 @@ const Main = () => {
                     <img src={assets.gemini_icon}></img>
                     {loading?
                     <div className='loader'>
-                        <hr />
-                        <hr />
-                        <hr />
                     </div>:<p dangerouslySetInnerHTML={{__html:resultData}}></p>
                     }
                     
